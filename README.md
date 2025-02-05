@@ -1,7 +1,7 @@
 # pyhaics.github.io
 Documentation Website for the pyHaiCS Library
 
-## Step-by-Step
+## Step-by-Step
 
 Install `mkdocs`:
 ```shell
