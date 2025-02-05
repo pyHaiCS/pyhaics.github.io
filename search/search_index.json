@@ -1,0 +1,1 @@
+{"config":{"lang":["en"],"separator":"[\\s\\-]+","pipeline":["stopWordFilter"]},"docs":[{"location":"","title":"Welcome to pyHaiCS!","text":"<p>This is a test!</p>"},{"location":"#test","title":"Test","text":"<p>aaaaa</p>"},{"location":"installation/","title":"Installation","text":"<p>This is another test :)</p>"}]}
