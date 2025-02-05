@@ -1,0 +1,65 @@
+site_name: pyHaiCS
+site_description: pyHaiCS Documentation.
+site_author: miguelfrndz
+site_url: https://pyhaics.github.io/
+
+# Repository
+repo_name: miguelfrndz/pyhaics.github.io
+repo_url: https://github.com/miguelfrndz/pyhaics.github.io
+
+theme:
+  name: material
+  palette: 
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: 'deep purple' # teal, deep purple, indigo
+      accent: 'indigo' # indigo, pink
+      toggle:
+        icon: material/brightness-7 
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: 'deep purple' # teal, deep purple, indigo
+      accent: 'indigo' # indigo, pink
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  # TODO: FIX THE LOGO COLORS IN THE NAV BAR
+  favicon: 'img/feather-icon.svg'
+  log: 'material/library'
+  # logo: 'img/logo.svg'
+
+nav:
+  - Home: index.md
+
+extra_css:
+    - css/extra.css
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:pymdownx.emoji.to_svg
+  - pymdownx.inlinehilite
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+# Plugins
+plugins:
+  - search
