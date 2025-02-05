@@ -22,3 +22,8 @@ Install `material` theme:
 ```shell
 pip install mkdocs-material
 ```
+
+Deploy website:
+```shell
+mkdocs gh-deploy
+```
