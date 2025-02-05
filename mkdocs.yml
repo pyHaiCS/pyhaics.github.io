@@ -4,8 +4,8 @@ site_author: miguelfrndz
 site_url: https://pyhaics.github.io/
 
 # Repository
-repo_name: miguelfrndz/pyhaics.github.io
-repo_url: https://github.com/miguelfrndz/pyhaics.github.io
+repo_name: pyHaiCS/pyhaics.github.io
+repo_url: https://github.com/pyHaiCS/pyhaics.github.io
 
 theme:
   name: material
