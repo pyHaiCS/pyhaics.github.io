@@ -1,10 +1,20 @@
 # Welcome to pyHaiCS!
 <div id="logo-welcome", align="center">
-    <img src="img/logo.svg" alt="pyHaiCS Logo" style="height: 200px; padding-bottom: 50px;">
+    <img src="img/logo.svg" alt="pyHaiCS Logo" style="height: auto; max-width: 55%; padding-bottom: 5%;">
 </div>
 
-This is a test!
+Lorem ipsum odor amet, consectetuer adipiscing elit. Convallis est senectus mauris platea sed facilisis ultricies. Morbi senectus posuere lacinia sapien turpis? Curae urna fames curae nibh sem integer est. Nibh nostra congue egestas urna ligula justo. Vestibulum blandit ut id sit congue mollis. Arcu class at semper enim justo bibendum.
+
+Consectetur nostra egestas id dui egestas accumsan maecenas. Habitant quam platea sollicitudin iaculis mollis pharetra etiam etiam. Auctor sagittis fames blandit velit vestibulum massa augue hendrerit posuere. Suscipit consequat pulvinar ipsum nullam nunc ligula facilisi. Sociosqu nam sollicitudin aenean volutpat commodo nunc. Vestibulum natoque lectus porttitor mattis; montes duis convallis. Volutpat per ultricies mus vel consectetur iaculis pulvinar. Nisl nunc est litora massa vitae fermentum ultricies. Integer risus facilisis pharetra ullamcorper nostra potenti amet odio tortor.
+
+Viverra sociosqu conubia et dui montes vestibulum. Cursus feugiat dapibus egestas urna nisl ornare nascetur facilisi. Placerat tortor vulputate tellus eros venenatis elit. Ultrices sapien elementum nisi venenatis dui integer himenaeos viverra. Ut nisi class himenaeos mollis vehicula fringilla per. Torquent pharetra augue congue blandit; fringilla torquent.
+
+Aptent integer id suspendisse sociosqu a fusce. Scelerisque posuere sociosqu ad interdum aliquam nam. Aenean neque porta massa vulputate molestie morbi cubilia. Arcu semper taciti vel euismod a ut velit. Habitasse dolor bibendum lobortis aliquet mus viverra justo ligula massa. Finibus feugiat efficitur blandit facilisi pellentesque non maecenas non et.
+
+Neque feugiat semper luctus dapibus placerat platea. Tellus quis malesuada fringilla nec sapien mollis fames eleifend. Nulla taciti justo lectus non montes convallis. Ullamcorper nunc fermentum, lacinia malesuada nostra praesent volutpat. Condimentum fringilla ut ex torquent montes cubilia. Ahimenaeos taciti lacus nisl euismod felis at vehicula. Placerat dictumst elementum cubilia parturient vivamus venenatis. Ridiculus felis aptent sollicitudin eu maecenas. Suspendisse arcu fames urna faucibus mattis diam.
 
 ## Test
 
-aaaaa
+Lorem ipsum odor amet, consectetuer adipiscing elit. Convallis est senectus mauris platea sed facilisis ultricies. Morbi senectus posuere lacinia sapien turpis? Curae urna fames curae nibh sem integer est. Nibh nostra congue egestas urna ligula justo. Vestibulum blandit ut id sit congue mollis. Arcu class at semper enim justo bibendum.
+
+Consectetur nostra egestas id dui egestas accumsan maecenas. Habitant quam platea sollicitudin iaculis mollis pharetra etiam etiam. Auctor sagittis fames blandit velit vestibulum massa augue hendrerit posuere. Suscipit consequat pulvinar ipsum nullam nunc ligula facilisi. Sociosqu nam sollicitudin aenean volutpat commodo nunc. Vestibulum natoque lectus porttitor mattis; montes duis convallis. Volutpat per ultricies mus vel consectetur iaculis pulvinar. Nisl nunc est litora massa vitae fermentum ultricies. Integer risus facilisis pharetra ullamcorper nostra potenti amet odio tortor.

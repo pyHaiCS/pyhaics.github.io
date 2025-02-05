@@ -1,9 +1,9 @@
-site_name: pyHaiCS
+site_name: pyHaiCS Documentation
 site_description: pyHaiCS Documentation.
 site_author: miguelfrndz
 site_url: https://pyhaics.github.io/
 
-# Repository
+# Repository - TODO: Change this to the pyHaiCS repo once it's public
 repo_name: pyHaiCS/pyhaics.github.io
 repo_url: https://github.com/pyHaiCS/pyhaics.github.io
 
