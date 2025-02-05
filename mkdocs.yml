@@ -28,12 +28,12 @@ theme:
         icon: material/brightness-4
         name: Switch to light mode
   # TODO: FIX THE LOGO COLORS IN THE NAV BAR
-  favicon: 'img/feather-icon.svg'
-  log: 'material/library'
-  # logo: 'img/logo.svg'
+  favicon: 'img/feather-icon-purple.svg'
+  logo: 'img/book-icon.svg'
 
 nav:
   - Home: index.md
+  - Installation: installation.md
 
 extra_css:
     - css/extra.css
