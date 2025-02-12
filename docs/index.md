@@ -3,18 +3,14 @@
     <img src="img/logo.svg" alt="pyHaiCS Logo" style="height: auto; max-width: 55%; padding-bottom: 5%;">
 </div>
 
-Lorem ipsum odor amet, consectetuer adipiscing elit. Convallis est senectus mauris platea sed facilisis ultricies. Morbi senectus posuere lacinia sapien turpis? Curae urna fames curae nibh sem integer est. Nibh nostra congue egestas urna ligula justo. Vestibulum blandit ut id sit congue mollis. Arcu class at semper enim justo bibendum.
+Introducing `pyHaiCS`, a Python library for **Hamiltonian-based Monte-Carlo** methods tailored towards practical applications in *computational statistics*. From sampling complex probability distributions, to approximating complex integrals — such as in the context of Bayesian inference — `pyHaiCS` is designed to be fast, flexible, and easy to use, with a focus on providing a user-friendly interface for researchers and practitioners while also offering users a variety of *advanced features*. 
 
-Consectetur nostra egestas id dui egestas accumsan maecenas. Habitant quam platea sollicitudin iaculis mollis pharetra etiam etiam. Auctor sagittis fames blandit velit vestibulum massa augue hendrerit posuere. Suscipit consequat pulvinar ipsum nullam nunc ligula facilisi. Sociosqu nam sollicitudin aenean volutpat commodo nunc. Vestibulum natoque lectus porttitor mattis; montes duis convallis. Volutpat per ultricies mus vel consectetur iaculis pulvinar. Nisl nunc est litora massa vitae fermentum ultricies. Integer risus facilisis pharetra ullamcorper nostra potenti amet odio tortor.
+Although currently in development, our library implements a wide range of **sampling algorithms** — including single-chain and multi-chain Hamiltoninan Monte-Carlo (HMC) and Generalized HMC (GHMC); a variety of numerical schemes for the *integration* of the simulated Hamiltonian dynamics (including a generalized version of Multi-Stage Splitting integrators), or a novel *adaptive* algorithm — Adaptive Integration Approach in Computational Statistics (s-AIA) — for the automatic tuning of the parameters of both the numerical integrator and the sampler. 
 
-Viverra sociosqu conubia et dui montes vestibulum. Cursus feugiat dapibus egestas urna nisl ornare nascetur facilisi. Placerat tortor vulputate tellus eros venenatis elit. Ultrices sapien elementum nisi venenatis dui integer himenaeos viverra. Ut nisi class himenaeos mollis vehicula fringilla per. Torquent pharetra augue congue blandit; fringilla torquent.
+Likewise, several utilities for *diagnosing* the convergence and efficiency of the sampling process, as well as *multidisciplinary* benchmarks — ranging from simple toy problems such as sampling from specific distributions, to more complex real-world applications in the fields of computational biology, Bayesian modeling, or physics — are provided.
 
-Aptent integer id suspendisse sociosqu a fusce. Scelerisque posuere sociosqu ad interdum aliquam nam. Aenean neque porta massa vulputate molestie morbi cubilia. Arcu semper taciti vel euismod a ut velit. Habitasse dolor bibendum lobortis aliquet mus viverra justo ligula massa. Finibus feugiat efficitur blandit facilisi pellentesque non maecenas non et.
+**Add diagrams with features :)**
 
-Neque feugiat semper luctus dapibus placerat platea. Tellus quis malesuada fringilla nec sapien mollis fames eleifend. Nulla taciti justo lectus non montes convallis. Ullamcorper nunc fermentum, lacinia malesuada nostra praesent volutpat. Condimentum fringilla ut ex torquent montes cubilia. Ahimenaeos taciti lacus nisl euismod felis at vehicula. Placerat dictumst elementum cubilia parturient vivamus venenatis. Ridiculus felis aptent sollicitudin eu maecenas. Suspendisse arcu fames urna faucibus mattis diam.
+## Introduction to Hamiltonian Monte-Carlo
 
-## Test
-
-Lorem ipsum odor amet, consectetuer adipiscing elit. Convallis est senectus mauris platea sed facilisis ultricies. Morbi senectus posuere lacinia sapien turpis? Curae urna fames curae nibh sem integer est. Nibh nostra congue egestas urna ligula justo. Vestibulum blandit ut id sit congue mollis. Arcu class at semper enim justo bibendum.
-
-Consectetur nostra egestas id dui egestas accumsan maecenas. Habitant quam platea sollicitudin iaculis mollis pharetra etiam etiam. Auctor sagittis fames blandit velit vestibulum massa augue hendrerit posuere. Suscipit consequat pulvinar ipsum nullam nunc ligula facilisi. Sociosqu nam sollicitudin aenean volutpat commodo nunc. Vestibulum natoque lectus porttitor mattis; montes duis convallis. Volutpat per ultricies mus vel consectetur iaculis pulvinar. Nisl nunc est litora massa vitae fermentum ultricies. Integer risus facilisis pharetra ullamcorper nostra potenti amet odio tortor.
+To be added soon :)
