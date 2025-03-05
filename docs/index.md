@@ -11,14 +11,70 @@ Likewise, several utilities for *diagnosing* the convergence and efficiency of t
 
 ## pyHaiCS Features
 
+The main features of pyHaiCS, as summarized in the figure below, include its:
+
+* **Efficient Implementation:** `pyHaiCS` is built on top of the JAX library developed by Google which provides **automatic differentiation** for computing gradients and Hessians, and Just-In-Time (JIT) *compilation* for fast numerical computations. Additionally, the library is designed to take advantage of multi-core CPUs, GPUs, or even TPUs for *accelerated* sampling, and to be highly *parallelizable* (e.g., by running each chain of multi-chain HMC in a separate CPU core/thread in the GPU).
+* **User-Friendly Interface:** The library is designed to be easy to use, with a simple and intuitive API that abstracts away the complexities of Hamiltonian Monte-Carlo (HMC) and related algorithms. Users can define their own potential functions and priors, and run sampling algorithms with just a few lines of code.
+* **Integration with Existing Tools:** The library is designed to be *easily integrated* with other Python libraries, such as NumPy, SciPy, and Scikit-Learn. This allows users to leverage existing tools and workflows, and build on top of the rich ecosystem of scientific computing in Python. Therefore, users can easily incorporate `pyHaiCS` into their existing Machine Learning workflows, and use it for tasks such as inference, model selection, or parameter estimation in the context of Bayesian modeling.
+* **Advanced Features:** `pyHaiCS` supports a variety of Hamiltonian-inspired sampling algorithms, including single-chain and multi-chain HMC (and GHMC), generalized $k$-th stage Multi-Stage Splitting integrators, and adaptive integration schemes (such as s-AIA).
+
 <div id="features", align="center">
     <img src="img/pyHaiCS_features.png" alt="pyHaiCS Features" style="height: auto; max-width: 90%; padding-bottom: 5%;">
 </div>
 
+In order to provide a functional and *easy-to-use* library, and especially to ensure that our code can be easily integrated into existing workflows, we have designed `pyHaiCS` with a simple rule in mind: Objects are specified by interface, not by inheritance. That is, much alike `Scikit-Learn`, inheritance is *not enforced*; and instead, code conventions provide a consistent interface for all samplers, integrators, and utilities. This allows for a more flexible and modular design, and makes it easier for users to extend the library with their own custom implementations. As Scikit's design around making all estimators have a consistent `fit` and `predict` interface, `pyHaiCS` follows a similar approach, but with a focus on Hamiltonian Monte-Carlo methods and its related algorithms. For instance, all integrators in `pyHaiCS` have a consistent `integrate` method, which takes as input the potential function, the initial state, and the parameters of the integrator, and returns the final state of the system after the integration process. 
+
+This consistent interface makes it easy for users to switch between different integrators, or to implement their own custom integrators, without having to worry about the underlying details of the implementation. Moreover, `pyHaiCS` is designed to be highly modular, with each component of the library being self-contained and independent of the others, as well as being easily extensible and customizable. As a further point of strength, our library handles all *auto-differentiation* (such as potential gradients and Hessians) through the `JAX` library, which provides a fast and efficient way to compute gradients as well as a higher level of abstraction for the user to focus on the actual problem at hand. By only defining the **potential** function of the Hamiltonian, the user can easily run the sampler and obtain the posterior distribution of the parameters of interest. As an example of the *ease-of-use* of `pyHaiCS`, we show below a simple example of how to define a Bayesian Logistic Regression (BLR) model:
+
+```python
+# Step 1 - Define the BLR model
+@jax.jit
+def model_fn(x, params):
+    return jax.nn.sigmoid(jnp.matmul(x, params))
+
+# Step 2 - Define the log-prior and log-likelihood
+@jax.jit
+def log_prior_fn(params):
+    return jnp.sum(jax.scipy.stats.norm.logpdf(params))
+
+@jax.jit
+def log_likelihood_fn(x, y, params):
+    preds = model_fn(x, params)
+    return jnp.sum(y * jnp.log(preds) + (1 - y) * jnp.log(1 - preds))
+
+# Step 3 - Define the log-posterior (remember, the oppositve of the potential)
+@jax.jit
+def log_posterior_fn(x, y, params):
+    return log_prior_fn(params) + log_likelihood_fn(x, y, params)
+
+# Initialize the model parameters (including intercept term)
+key = jax.random.PRNGKey(42)
+mean_vector, cov_mat = jnp.zeros(X_train.shape[1]), jnp.eye(X_train.shape[1])
+params = jax.random.multivariate_normal(key, mean_vector, cov_mat)
+
+# HMC for posterior sampling
+params_samples = haics.samplers.hamiltonian.HMC(params, 
+                            potential_args = (X_train, y_train),
+                            n_samples = 1000, burn_in = 200, 
+                            step_size = 1e-3, n_steps = 100, 
+                            potential = neg_log_posterior_fn,  
+                            mass_matrix = jnp.eye(X_train.shape[1]), 
+                            integrator = haics.integrators.VerletIntegrator(), 
+                            RNG_key = key)
+
+# Average across chains
+params_samples = jnp.mean(params_samples, axis = 0)
+
+# Make predictions using the samples
+preds = jax.vmap(lambda params: model_fn(X_test, params))(params_samples)
+mean_preds = jnp.mean(preds, axis = 0)
+```
+
+Regarding the actual features implemented in `pyHaiCS`, and the general organization of its API, the figure below provides a **high-level overview** of the main components of the library. As can be seen, the library is organized around four main components: *Hamiltonian Samplers*, *Numerical Integrators*, *Adaptive Tuning*, and *Sampling Metrics*. Each of these components is further divided into sub-components, such as the different samplers implemented in the library (e.g., HMC, GHMC, and the yet to be implemented, MMHMC), the numerical integrators (such as variants of Velocity-Verlet, and  2-Stage and 3-Stage MSSIs), or the s-AIA adaptive tuning scheme. The library also includes a variety of sampling metrics for diagnosing the convergence and efficiency of the sampling process, as well as multidisciplinary benchmarks (and code examples) for testing the performance of the library. These experimental models are presented in the subsection below.
+
 <div id="features-hierarchical", align="center">
     <img src="img/pyHaiCS_features_hierarchical.png" alt="pyHaiCS Features Hierarchical" style="height: auto; max-width: 90%; padding-bottom: 5%;">
 </div>
-
 
 ## Introduction to Hamiltonian Monte-Carlo
 
