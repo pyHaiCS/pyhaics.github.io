@@ -29,7 +29,7 @@ theme:
         name: Switch to light mode
   # TODO: FIX THE LOGO COLORS IN THE NAV BAR
   favicon: 'img/feather-icon-purple.svg'
-  logo: 'img/book-icon.svg'
+  logo: 'img/feather-icon-white.svg'
 
 nav:
   - Home: index.md
