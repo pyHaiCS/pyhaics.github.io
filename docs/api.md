@@ -90,89 +90,238 @@ Generalized Hamiltonian Monte-Carlo (GHMC) sampler with momentum updates.
 
 ## Numerical Integrators
 
-Likewise, numerous numerical integrators to simulate the Hamiltonian dynamics are implemented.
+Likewise, numerous numerical integrators to simulate the Hamiltonian dynamics are implemented. **Important note:** All numerical integrators are implemented as classes that inherit from the `Integrator` class and have a common interface. All samplers call the `integrate()` method of the integrator class to simulate the Hamiltonian dynamics.
 
-### Verlet Integrator
+### Leapfrog/Modified 1-Stage Verlet Integrator (Default)
 
-```python
-class VerletIntegrator(Integrator):
-    def integrate(self, x, p, potential_grad, n_steps, mass_matrix, step_size)
-```
-
-Leapfrog/Modified 1-Stage Verlet Integrator.
-
-### Multi-Stage Splitting Integrators
-
-#### Second-Order Integrators
+This is the default integrator used by pyHaiCS. It is a modified 1-stage Verlet integrator with momentum half-steps.
 
 ```python
-class MSSI_2(MultiStageSplittingIntegrator):
-    def __init__(self, b)
+integrator = VerletIntegrator()
 ```
 
-Base class for second-order multi-stage splitting integrators.
+**Algorithm:**
+
+```
+1. Update momentum (half-step): p = p - step_size/2 * potential_grad(x)
+2. For i = 1 to (n_integration_steps - 1):
+    - Update position (full-step): x = x + step_size * M^(-1) * p
+    - Update momentum (full-step): p = p - step_size * potential_grad(x)
+3. Update position (full-step): x = x + step_size * M^(-1) * p
+4. Update momentum (half-step): p = p - step_size/2 * potential_grad(x)
+5. Return x, p
+```
+
+### Multi-Stage Splitting Integrators (MSSIs)
+
+The library implements various multi-stage splitting integrators for simulating Hamiltonian dynamics.
+
+| Integrator | Nº of Stages ($k$) | Coefficients |
+|------------|------------------|--------------|
+| 1-Stage Velocity Verlet (VV1) | 1 | - |
+| 2-Stage Velocity Verlet (VV2) | 2 | $b = 1/4$ |
+| 2-Stage BCSS (BCSS2) | 2 | $b = 0.211781$ |
+| 2-Stage Minimum-Error (ME2) | 2 | $b = 0.193183$ |
+| 3-Stage Velocity Verlet (VV3) | 3 | $a = 1/3, b = 1/6$ |
+| 3-Stage BCSS (BCSS3) | 3 | $a = 0.296195, b = 0.118880$ |
+| 3-Stage Minimum-Error (ME3) | 3 | $a = 0.290486, b = 0.108991$ |
+
+#### Second-Stage MSSIs
+
+```python
+integrator = MSSI_2(b)
+```
+
+Base class for second-stage multi-stage splitting integrators.
 
 Available implementations:
-- `VV_2`: Velocity Verlet integrator
-- `BCSS_2`: BCSS integrator
-- `ME_2`: McLachlan-Engel integrator
 
-#### Third-Order Integrators
+- `VV_2`: Velocity-Verlet integrator ($b = 1/4$)
+- `BCSS_2`: BCSS integrator ($b = 0.211781$)
+- `ME_2`: Minimum Error integrator ($b = 0.193183$)
+
+#### Third-Stage MSSIs
 
 ```python
-class MSSI_3(MultiStageSplittingIntegrator):
-    def __init__(self, a, b)
+integrator = MSSI_3(a, b)
 ```
 
-Base class for third-order multi-stage splitting integrators.
+Base class for third-stage multi-stage splitting integrators.
 
 Available implementations:
-- `VV_3`: Velocity Verlet integrator
-- `BCSS_3`: BCSS integrator
-- `ME_3`: McLachlan-Engel integrator
 
-## Adaptive Methods
+- `VV_3`: Velocity-Verlet integrator ($a = 1/3, b = 1/6$)
+- `BCSS_3`: BCSS integrator ($a = 0.296195, b = 0.118880$)
+- `ME_3`: Minimum Error integrator ($a = 0.290486, b = 0.108991$)
+
+## Adaptive Tuning Methods
 
 ### Self-Adaptive Integration Algorithm (sAIA)
 
-The sAIA implementation includes several adaptive components:
+Moreover, our library implements novel adaptive methods, such as **s-AIA**, for automatically tuning the parameters of the numerical integrator and the sampler. This algorithm is particularly useful for applications in computational statistics where manual tuning of parameters can be time-consuming and error-prone.
 
-1. **Tuning Phase**
+Importantly, the s-AIA algorithm in pyHaiCS is designed to be used as if it were a sampler, i.e., it can be called with the same syntax as the other samplers implemented in the library.
+
 ```python
-def _sAIA_Tuning(x_init, n_samples_tune, n_samples_check, step_size, n_steps, sensibility, target_AR, potential, potential_grad, potential_hessian, mass_matrix, delta_step, integrator, sampler, momentum_noise_lower, momentum_noise_upper, key)
+def sAIA(x_init, potential_args, n_samples_tune, n_samples_check, 
+         n_samples_burn_in, n_samples_prod, potential, mass_matrix, 
+         target_AR, stage, sensibility, delta_step, compute_freqs, 
+         sampler, RNG_key)
 ```
 
-2. **Burn-in Phase**
+The sAIA method works by iteratively optimizing the integration parameters to achieve a target acceptance rate while maintaining the efficiency of the sampling process. It consists of three main phases:
+
+1. **Tuning Phase**: During this phase, the algorithm explores different combinations of step sizes and integration steps to find optimal values that lead to the desired acceptance rate.
+
+2. **Burn-in Phase**: Once the parameters are tuned, this phase allows the sampler to converge to the target distribution while maintaining the optimized parameters.
+
+3. **Production Phase**: The final phase where samples are collected using the optimized parameters.
+
+The algorithm is particularly effective because it:
+
+- Optimizes both the parameters of the numerical integrator and the sampler.
+- Can be used with both HMC and GHMC samplers.
+- Provides optimal coefficients for multi-stage splitting integrators.
+- Includes momentum noise optimization for GHMC.
+- Removes the need for manual tuning any parameters or running multiple chains.
+
+**Parameters:**
+
+- `x_init`: Initial position
+- `potential_args`: Arguments for the potential function
+- `n_samples_tune`: Number of samples to tune the parameters
+- `n_samples_check`: Number of samples to check the convergence
+- `n_samples_burn_in`: Number of samples for burn-in
+- `n_samples_prod`: Number of samples for production
+- `potential`: Hamiltonian potential function
+- `mass_matrix`: Mass matrix for the Hamiltonian dynamics
+- `target_AR`: Target acceptance rate
+- `stage`: Number of stages for the multi-stage splitting integrator
+- `sensibility`: Sensibility parameter for the s-AIA algorithm
+- `delta_step`: Step size for the parameter search
+- `compute_freqs`: Whether to compute the frequencies of the potential
+- `sampler`: Sampler (default: HMC)
+- `RNG_key`: Random number generator key
+
+**Returns:**
+
+- `samples`: Array of samples
+
+## Evaluation Metrics
+
+The library provides a comprehensive set of metrics for evaluating the performance and convergence of the samplers. These metrics are essential for diagnosing the quality of the sampling process and ensuring reliable results.
+
+The `compute_metrics()` function can be used to compute all the metrics implemented in the library for a given set of samples.
+
 ```python
-def _sAIA_BurnIn(x_init, n_samples_burn_in, n_samples_prod, compute_freqs, step_size, n_steps, stage, potential, potential_grad, potential_hessian, mass_matrix, integrator, sampler, momentum_noise_lower, momentum_noise_upper, key)
+def compute_metrics(samples, thres_estimator, normalize_ESS)
 ```
 
-3. **Optimal Coefficient Computation**
-```python
-def _sAIA_OptimalCoeffs(dimensionless_step_sizes, stage, key, n_coeff_samples=20)
-```
+**Parameters:**
 
-4. **Momentum Noise Optimization**
-```python
-def optimal_momentum_noise(step_size_nondim, stage, D, a=None, b=None)
-```
+- `samples`: Array of samples
+- `thres_estimator`: Threshold estimator for the effective sample size (ESS)
+- `normalize_ESS`: Whether to normalize the ESS values
 
-The adaptive methods automatically tune:
-- Integration step size
-- Number of integration steps
-- Momentum noise parameters (for GHMC)
-- Integration coefficients
-- Mass matrix
-
-## Utility Functions
-
-### Metrics
+### Acceptance Rate
 
 ```python
-def acceptance_rate(accepted)
+def acceptance_rate(num_acceptals, n_samples)
 ```
 
 Computes the acceptance rate from a sequence of accepted/rejected proposals.
+
+**Parameters:**
+
+- `num_acceptals`: Number of accepted proposals
+- `n_samples`: Total number of proposals
+
+**Returns:**
+
+- `float`: Acceptance rate between 0 and 1
+
+### Rejection Rate
+
+```python
+def rejection_rate(num_acceptals, n_samples)
+```
+
+Computes the rejection rate from a sequence of accepted/rejected proposals.
+
+**Parameters:**
+
+- `num_acceptals`: Number of accepted proposals
+- `n_samples`: Total number of proposals
+
+**Returns:**
+
+- `float`: Rejection rate between 0 and 1
+
+### Potential Scale Reduction Factor (PSRF)
+
+```python
+def PSRF(samples)
+```
+
+Computes the potential scale reduction factor (Gelman-Rubin diagnostic) for multiple chains.
+
+**Parameters:**
+
+- `samples`: Array of samples from multiple chains
+
+**Returns:**
+
+- `float`: PSRF value
+
+**Note:** A PSRF close to 1 indicates good convergence across chains.
+
+### Effective Sample Size (ESS)
+
+Geyer's initial Markov Chain Monte Carlo (MCE) estimator is implemented in the library.
+
+*To be completed...*
+
+### Monte-Carlo Standard Error (MCSE)
+
+```python
+def MCSE(samples, ess_values)
+```
+
+Computes the Monte Carlo Standard Error (MCSE) from the effective sample size (ESS).
+
+**Parameters:**
+
+- `samples`: Array of samples from the chain
+- `ess_values`: Effective sample size values
+
+**Returns:**
+
+- `float`: Monte Carlo Standard Error
+
+**Note:** The MCSE is a measure of the precision of the estimator, it is inversely proportional to the square root of the ESS.
+
+### Integrated Autocorrelation Time (IACT)
+
+```python
+def IACT(samples, ess_values, normalized_ESS = True)
+```
+
+Computes the integrated autocorrelation time, which measures the autocorrelation between samples, it can also be defined as the number of Monte-Carlo iterations needed, on average, for an independent sample to be drawn.
+
+**Parameters:**
+
+- `samples`: Array of samples from the chain
+- `ess_values`: Effective sample size values
+- `normalized_ESS`: Whether to normalize the ESS values
+
+**Returns:**
+
+- `float`: Integrated autocorrelation time
+
+**Note:** On average, IACT correlated samples are required in order to reduce the variance of the estimator by the same amount as a single uncorrelated sample.
+
+
+## Utility Functions
 
 ### Kinetic Energy
 
