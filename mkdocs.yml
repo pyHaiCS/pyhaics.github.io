@@ -34,8 +34,8 @@ theme:
 nav:
   - Home: index.md
   - Quick Start: quick_start.md
-  - API: api.md
   - Experimental Models: benchmarks.md
+  - API: api.md
 
 extra_css:
     - css/extra.css

@@ -1,4 +1,4 @@
-# Experimental Models
+# Experimental Benchmark Models
 
 This section presents a collection of benchmarking scenarios for comparing and assessing the performance, and behavior, of different Hamiltonian-based estimators based on several of their intrinsic properties:
 

@@ -35,7 +35,7 @@ X_train = jnp.hstack([X_train, jnp.ones((X_train.shape[0], 1))])
 X_test = jnp.hstack([X_test, jnp.ones((X_test.shape[0], 1))])
 ```
 
-First, we train a baseline point-estimate logistic regression model...
+First, we train a baseline *point-estimate* logistic regression model...
 ```python
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score
