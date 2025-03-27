@@ -156,7 +156,7 @@ Available implementations:
 
 ## Adaptive Tuning Methods
 
-### Self-Adaptive Integration Algorithm (sAIA)
+### Statistical Adaptive Integration Approach (s-AIA)
 
 Moreover, our library implements novel adaptive methods, such as **s-AIA**, for automatically tuning the parameters of the numerical integrator and the sampler. This algorithm is particularly useful for applications in computational statistics where manual tuning of parameters can be time-consuming and error-prone.
 
@@ -169,7 +169,7 @@ def sAIA(x_init, potential_args, n_samples_tune, n_samples_check,
          sampler, RNG_key)
 ```
 
-The sAIA method works by iteratively optimizing the integration parameters to achieve a target acceptance rate while maintaining the efficiency of the sampling process. It consists of three main phases:
+The s-AIA method works by iteratively optimizing the integration parameters to achieve a target acceptance rate while maintaining the efficiency of the sampling process. It consists of three main phases:
 
 1. **Tuning Phase**: During this phase, the algorithm explores different combinations of step sizes and integration steps to find optimal values that lead to the desired acceptance rate.
 
