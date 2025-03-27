@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="../img/feather-icon-purple.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.9">
     
     
       
@@ -28,7 +28,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.8608ea7d.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.4af4bdda.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
@@ -466,9 +466,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#self-adaptive-integration-algorithm-saia" class="md-nav__link">
+  <a href="#statistical-adaptive-integration-approach-s-aia" class="md-nav__link">
     <span class="md-ellipsis">
-      Self-Adaptive Integration Algorithm (sAIA)
+      Statistical Adaptive Integration Approach (s-AIA)
     </span>
   </a>
   
@@ -716,9 +716,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#self-adaptive-integration-algorithm-saia" class="md-nav__link">
+  <a href="#statistical-adaptive-integration-approach-s-aia" class="md-nav__link">
     <span class="md-ellipsis">
-      Self-Adaptive Integration Algorithm (sAIA)
+      Statistical Adaptive Integration Approach (s-AIA)
     </span>
   </a>
   
@@ -1006,7 +1006,7 @@
 <li><code>ME_3</code>: Minimum Error integrator (<span class="arithmatex">\(a = 0.290486, b = 0.108991\)</span>)</li>
 </ul>
 <h2 id="adaptive-tuning-methods">Adaptive Tuning Methods<a class="headerlink" href="#adaptive-tuning-methods" title="Permanent link">&para;</a></h2>
-<h3 id="self-adaptive-integration-algorithm-saia">Self-Adaptive Integration Algorithm (sAIA)<a class="headerlink" href="#self-adaptive-integration-algorithm-saia" title="Permanent link">&para;</a></h3>
+<h3 id="statistical-adaptive-integration-approach-s-aia">Statistical Adaptive Integration Approach (s-AIA)<a class="headerlink" href="#statistical-adaptive-integration-approach-s-aia" title="Permanent link">&para;</a></h3>
 <p>Moreover, our library implements novel adaptive methods, such as <strong>s-AIA</strong>, for automatically tuning the parameters of the numerical integrator and the sampler. This algorithm is particularly useful for applications in computational statistics where manual tuning of parameters can be time-consuming and error-prone.</p>
 <p>Importantly, the s-AIA algorithm in pyHaiCS is designed to be used as if it were a sampler, i.e., it can be called with the same syntax as the other samplers implemented in the library.</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">sAIA</span><span class="p">(</span><span class="n">x_init</span><span class="p">,</span> <span class="n">potential_args</span><span class="p">,</span> <span class="n">n_samples_tune</span><span class="p">,</span> <span class="n">n_samples_check</span><span class="p">,</span> 
@@ -1014,7 +1014,7 @@
          <span class="n">target_AR</span><span class="p">,</span> <span class="n">stage</span><span class="p">,</span> <span class="n">sensibility</span><span class="p">,</span> <span class="n">delta_step</span><span class="p">,</span> <span class="n">compute_freqs</span><span class="p">,</span> 
          <span class="n">sampler</span><span class="p">,</span> <span class="n">RNG_key</span><span class="p">)</span>
 </code></pre></div>
-<p>The sAIA method works by iteratively optimizing the integration parameters to achieve a target acceptance rate while maintaining the efficiency of the sampling process. It consists of three main phases:</p>
+<p>The s-AIA method works by iteratively optimizing the integration parameters to achieve a target acceptance rate while maintaining the efficiency of the sampling process. It consists of three main phases:</p>
 <ol>
 <li>
 <p><strong>Tuning Phase</strong>: During this phase, the algorithm explores different combinations of step sizes and integration steps to find optimal values that lead to the desired acceptance rate.</p>
