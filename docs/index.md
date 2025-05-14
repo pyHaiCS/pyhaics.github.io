@@ -9,6 +9,19 @@ Although currently still in development, our library implements a wide range of 
 
 Likewise, several utilities for *diagnosing* the convergence and efficiency of the sampling process, as well as **multidisciplinary benchmarks** — ranging from simple toy problems such as sampling from specific distributions, to more complex real-world applications in the fields of computational biology, Bayesian modeling, or physics — are provided.
 
+## Installation
+You can use `pip` to install `pyHaiCS` from the GitHub official release builds. You can do this by running the following command in your terminal:
+```bash
+pip install $(curl -s https://pyhaics.github.io/latest.txt)
+```
+Note that the above command will install the latest official version of `pyHaiCS` currently available on the GitHub releases page.
+
+Alternatively, you can also install the library directly from the GitHub repository by running:
+```bash
+pip install git+[url-to-pyHaiCS-repo]
+```
+where `[url-to-pyHaiCS-repo]` is the URL to the `pyHaiCS` GitHub repository.
+
 ## pyHaiCS Features
 
 The main features of pyHaiCS, as summarized in the figure below, include its:
