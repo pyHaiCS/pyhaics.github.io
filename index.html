@@ -308,6 +308,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#pyhaics-features" class="md-nav__link">
     <span class="md-ellipsis">
       pyHaiCS Features
@@ -426,6 +435,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#pyhaics-features" class="md-nav__link">
     <span class="md-ellipsis">
       pyHaiCS Features
@@ -470,6 +488,15 @@
 <p>Introducing <code>pyHaiCS</code>, a Python library for <strong>Hamiltonian-based Monte-Carlo</strong> methods tailored towards practical applications in <em>computational statistics</em>. From sampling complex probability distributions, to approximating complex integrals, <code>pyHaiCS</code> is designed to be fast, flexible, and easy to use, with a focus on providing a <em>user-friendly</em> interface for researchers and practitioners while also offering users a variety of <strong>advanced features</strong>. </p>
 <p>Although currently still in development, our library implements a wide range of <strong>sampling algorithms</strong> — including single-chain and multi-chain Hamiltoninan Monte-Carlo (HMC) and Generalized HMC (GHMC); a variety of numerical schemes for the <em>integration</em> of the simulated Hamiltonian dynamics (including a generalized version of Multi-Stage Splitting integrators), or a novel <em>adaptive</em> algorithm — Adaptive Integration Approach in Computational Statistics (s-AIA) — for the automatic tuning of the parameters of both the numerical integrator and the sampler. </p>
 <p>Likewise, several utilities for <em>diagnosing</em> the convergence and efficiency of the sampling process, as well as <strong>multidisciplinary benchmarks</strong> — ranging from simple toy problems such as sampling from specific distributions, to more complex real-world applications in the fields of computational biology, Bayesian modeling, or physics — are provided.</p>
+<h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
+<p>You can use <code>pip</code> to install <code>pyHaiCS</code> from the GitHub official release builds. You can do this by running the following command in your terminal:
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span><span class="k">$(</span>curl<span class="w"> </span>-s<span class="w"> </span>https://pyhaics.github.io/latest.txt<span class="k">)</span>
+</code></pre></div>
+Note that the above command will install the latest official version of <code>pyHaiCS</code> currently available on the GitHub releases page.</p>
+<p>Alternatively, you can also install the library directly from the GitHub repository by running:
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>git+<span class="o">[</span>url-to-pyHaiCS-repo<span class="o">]</span>
+</code></pre></div>
+where <code>[url-to-pyHaiCS-repo]</code> is the URL to the <code>pyHaiCS</code> GitHub repository.</p>
 <h2 id="pyhaics-features">pyHaiCS Features<a class="headerlink" href="#pyhaics-features" title="Permanent link">&para;</a></h2>
 <p>The main features of pyHaiCS, as summarized in the figure below, include its:</p>
 <ul>
