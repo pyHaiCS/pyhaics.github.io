@@ -147,9 +147,9 @@ N = S(t) + E(t) + I(t) + R(t)
 \end{cases}
 $$
 
-## Talbot Physical Effect
+## Talbot Effect
 
-This benchmark analyzes Partial Differential Equations (PDEs) in the context of the phenomenon occurring when a plane light wave is diffracted by an infinite set of equally spaced slits (the grating, with distance $d$ between the slits).
+This benchmark (preprint available at [arXiv:2507.00820](https://arxiv.org/abs/2507.00820)) analyzes Partial Differential Equations (PDEs) in the context of the physical phenomenon occurring when a plane light wave is diffracted by an infinite set of equally spaced slits (the grating, with distance $d$ between the slits).
 
 We wish to find solutions to the following differential equation:
 

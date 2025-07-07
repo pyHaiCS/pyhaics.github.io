@@ -88,6 +88,24 @@ Generalized Hamiltonian Monte-Carlo (GHMC) sampler with momentum updates.
 
 - `samples`: Array of samples (multiple chains)
 
+#### Special Cases of GHMC
+
+!!! info
+    For the sake of clarity, the latest version of `pyHaiCS` includes several particular samplers derivable from the core GHMC algorithm, such as **Molecular Dynamics Monte Carlo (MDMC)**, **Stochastic Langevin Dynamics Monte Carlo (SLDMC)**, **Metropolis Adjusted Langevin Algorithm (MALA)**, and **Second-Order Langevin Monte Carlo (L2MC)**.
+
+    **Table: Special Cases of GHMC.**  
+
+    | **Method** | $L$         | $\phi$                                   | **Metropolize Acceptance** |
+    |------------|-----------|--------------------------------------|----------------------|
+    | HMC        | any | 1                                    | yes                  |
+    | MALA       | 1         | 1                                    | yes                  |
+    | L2MC       | 1         | any                            | yes                  |
+    | MDMC         | any | 0                                    | no                   |
+    | SLDMC         | any | $\sqrt{(2\gamma\varepsilon)}$ (≪ 1), $\gamma > 0$                 | no                   |
+
+    For SLDMC, $\gamma$ is the friction coefficient. (*Table adapted from ["Optimising performance of Hamiltonian Monte Carlo (HMC) in molecular simulation and computational statistics"](https://bird.bcamath.org/handle/20.500.11824/2005).*)
+
+
 ## Numerical Integrators
 
 Likewise, numerous numerical integrators to simulate the Hamiltonian dynamics are implemented. **Important note:** All numerical integrators are implemented as classes that inherit from the `Integrator` class and have a common interface. All samplers call the `integrate()` method of the integrator class to simulate the Hamiltonian dynamics.
