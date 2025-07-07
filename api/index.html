@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="../img/feather-icon-purple.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.11">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
     
     
       
@@ -28,7 +28,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.4af4bdda.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.342714a4.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
@@ -399,6 +399,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Generalized Hamiltonian Monte Carlo (GHMC)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#special-cases-of-ghmc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Special Cases of GHMC
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -648,6 +663,21 @@
       Generalized Hamiltonian Monte Carlo (GHMC)
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Generalized Hamiltonian Monte Carlo (GHMC)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#special-cases-of-ghmc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Special Cases of GHMC
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -930,6 +960,55 @@
 <ul>
 <li><code>samples</code>: Array of samples (multiple chains)</li>
 </ul>
+<h4 id="special-cases-of-ghmc">Special Cases of GHMC<a class="headerlink" href="#special-cases-of-ghmc" title="Permanent link">&para;</a></h4>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>For the sake of clarity, the latest version of <code>pyHaiCS</code> includes several particular samplers derivable from the core GHMC algorithm, such as <strong>Molecular Dynamics Monte Carlo (MDMC)</strong>, <strong>Stochastic Langevin Dynamics Monte Carlo (SLDMC)</strong>, <strong>Metropolis Adjusted Langevin Algorithm (MALA)</strong>, and <strong>Second-Order Langevin Monte Carlo (L2MC)</strong>.</p>
+<p><strong>Table: Special Cases of GHMC.</strong>  </p>
+<table>
+<thead>
+<tr>
+<th><strong>Method</strong></th>
+<th><span class="arithmatex">\(L\)</span></th>
+<th><span class="arithmatex">\(\phi\)</span></th>
+<th><strong>Metropolize Acceptance</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HMC</td>
+<td>any</td>
+<td>1</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>MALA</td>
+<td>1</td>
+<td>1</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>L2MC</td>
+<td>1</td>
+<td>any</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>MDMC</td>
+<td>any</td>
+<td>0</td>
+<td>no</td>
+</tr>
+<tr>
+<td>SLDMC</td>
+<td>any</td>
+<td><span class="arithmatex">\(\sqrt{(2\gamma\varepsilon)}\)</span> (≪ 1), <span class="arithmatex">\(\gamma &gt; 0\)</span></td>
+<td>no</td>
+</tr>
+</tbody>
+</table>
+<p>For SLDMC, <span class="arithmatex">\(\gamma\)</span> is the friction coefficient. (<em>Table adapted from <a href="https://bird.bcamath.org/handle/20.500.11824/2005">"Optimising performance of Hamiltonian Monte Carlo (HMC) in molecular simulation and computational statistics"</a>.</em>)</p>
+</div>
 <h2 id="numerical-integrators">Numerical Integrators<a class="headerlink" href="#numerical-integrators" title="Permanent link">&para;</a></h2>
 <p>Likewise, numerous numerical integrators to simulate the Hamiltonian dynamics are implemented. <strong>Important note:</strong> All numerical integrators are implemented as classes that inherit from the <code>Integrator</code> class and have a common interface. All samplers call the <code>integrate()</code> method of the integrator class to simulate the Hamiltonian dynamics.</p>
 <h3 id="leapfrogmodified-1-stage-verlet-integrator-default">Leapfrog/Modified 1-Stage Verlet Integrator (Default)<a class="headerlink" href="#leapfrogmodified-1-stage-verlet-integrator-default" title="Permanent link">&para;</a></h3>
@@ -1204,10 +1283,10 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.c8b220af.min.js"></script>
+      <script src="../assets/javascripts/bundle.56ea9cef.min.js"></script>
       
         <script src="../javascripts/mathjax.js"></script>
       
