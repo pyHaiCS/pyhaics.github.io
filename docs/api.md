@@ -8,10 +8,27 @@ In this section, we provide a detailed API reference for the `pyHaiCS` library. 
 
 ## Samplers
 
-Samplers are the main component of the library. They implement the Hamiltonian Monte Carlo (HMC) and Generalized Hamiltonian Monte Carlo (GHMC) algorithms, both in their standard and adaptive versions. Moreover, both *single-chain* and *multi-chain* versions are implemented.
+Samplers are at the core of the `pyHaiCS` library, providing efficient algorithms for exploring complex probability distributions using Hamiltonian dynamics. The library supports both standard and adaptive variants of Hamiltonian Monte Carlo (HMC) and Generalized Hamiltonian Monte Carlo (GHMC), with implementations for both single-chain and multi-chain sampling.
+
+Additionally, the library includes several special cases of GHMC, such as Molecular Dynamics Monte Carlo (MDMC), Stochastic Langevin Dynamics Monte Carlo (SLDMC), Metropolis Adjusted Langevin Algorithm (MALA), and Second-Order Langevin Monte Carlo (L2MC).
+
+!!! info "Implemented Samplers"
+    The following samplers are currently available in **pyHaiCS**:
+    
+    - **Random-Walk Metropolis-Hastings (RWMH)**
+    - **Hamiltonian Monte Carlo (HMC)**
+    - **Generalized Hamiltonian Monte Carlo (GHMC)**
+    - **s-AIA HMC/GHMC** (Adaptive Tuning Versions for HMC/GHMC)
+    - *Special Cases of GHMC*:
+        - **Molecular Dynamics Monte Carlo (MDMC)**
+        - **Stochastic Langevin Dynamics Monte Carlo (SLDMC)**
+        - **Metropolis Adjusted Langevin Algorithm (MALA)**
+        - **Second-Order Langevin Monte Carlo (L2MC)**
+    - **Modified Hamiltonian Monte Carlo (MHMC)**
+    - **Riemannian Manifold Hamiltonian Monte Carlo (RMHMC)**  (to be implemented)
 
 <div id="samplers", align="center">
-    <img src="img/Implemented_Samplers.png" alt="pyHaiCS Samplers" style="height: auto; max-width: 90%; padding-bottom: 5%;">
+    <img src="../img/Implemented_Samplers.png" alt="pyHaiCS Samplers" style="height: auto; max-width: 70%">
 </div>
 
 ### Hamiltonian Monte Carlo (HMC)
