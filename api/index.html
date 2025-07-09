@@ -895,9 +895,29 @@
 
 <p>In this section, we provide a detailed API reference for the <code>pyHaiCS</code> library. The library is organized around four main components: <strong>Hamiltonian Samplers</strong>, <strong>Numerical Integrators</strong>, <strong>Adaptive Tuning</strong>, and <strong>Sampling Metrics</strong>. Each of these components is further divided into sub-components, such as the different samplers implemented in the library (e.g., HMC, GHMC, and the yet to be implemented, MMHMC), the numerical integrators (such as variants of Velocity-Verlet, and  2-Stage and 3-Stage MSSIs), or the s-AIA adaptive tuning scheme. The library also includes a variety of sampling metrics for diagnosing the convergence and efficiency of the sampling process, as well as multidisciplinary benchmarks for testing the performance of the library.</p>
 <h2 id="samplers">Samplers<a class="headerlink" href="#samplers" title="Permanent link">&para;</a></h2>
-<p>Samplers are the main component of the library. They implement the Hamiltonian Monte Carlo (HMC) and Generalized Hamiltonian Monte Carlo (GHMC) algorithms, both in their standard and adaptive versions. Moreover, both <em>single-chain</em> and <em>multi-chain</em> versions are implemented.</p>
+<p>Samplers are at the core of the <code>pyHaiCS</code> library, providing efficient algorithms for exploring complex probability distributions using Hamiltonian dynamics. The library supports both standard and adaptive variants of Hamiltonian Monte Carlo (HMC) and Generalized Hamiltonian Monte Carlo (GHMC), with implementations for both single-chain and multi-chain sampling.</p>
+<p>Additionally, the library includes several special cases of GHMC, such as Molecular Dynamics Monte Carlo (MDMC), Stochastic Langevin Dynamics Monte Carlo (SLDMC), Metropolis Adjusted Langevin Algorithm (MALA), and Second-Order Langevin Monte Carlo (L2MC).</p>
+<div class="admonition info">
+<p class="admonition-title">Implemented Samplers</p>
+<p>The following samplers are currently available in <strong>pyHaiCS</strong>:</p>
+<ul>
+<li><strong>Random-Walk Metropolis-Hastings (RWMH)</strong></li>
+<li><strong>Hamiltonian Monte Carlo (HMC)</strong></li>
+<li><strong>Generalized Hamiltonian Monte Carlo (GHMC)</strong></li>
+<li><strong>s-AIA HMC/GHMC</strong> (Adaptive Tuning Versions for HMC/GHMC)</li>
+<li><em>Special Cases of GHMC</em>:<ul>
+<li><strong>Molecular Dynamics Monte Carlo (MDMC)</strong></li>
+<li><strong>Stochastic Langevin Dynamics Monte Carlo (SLDMC)</strong></li>
+<li><strong>Metropolis Adjusted Langevin Algorithm (MALA)</strong></li>
+<li><strong>Second-Order Langevin Monte Carlo (L2MC)</strong></li>
+</ul>
+</li>
+<li><strong>Modified Hamiltonian Monte Carlo (MHMC)</strong></li>
+<li><strong>Riemannian Manifold Hamiltonian Monte Carlo (RMHMC)</strong>  (to be implemented)</li>
+</ul>
+</div>
 <div id="samplers", align="center">
-    <img src="img/Implemented_Samplers.png" alt="pyHaiCS Samplers" style="height: auto; max-width: 90%; padding-bottom: 5%;">
+    <img src="../img/Implemented_Samplers.png" alt="pyHaiCS Samplers" style="height: auto; max-width: 70%">
 </div>
 
 <h3 id="hamiltonian-monte-carlo-hmc">Hamiltonian Monte Carlo (HMC)<a class="headerlink" href="#hamiltonian-monte-carlo-hmc" title="Permanent link">&para;</a></h3>
