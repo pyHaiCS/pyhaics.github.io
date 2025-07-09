@@ -8,7 +8,11 @@ In this section, we provide a detailed API reference for the `pyHaiCS` library. 
 
 ## Samplers
 
-Samplers are the main components of the library. They implement the Hamiltonian Monte Carlo (HMC) and Generalized Hamiltonian Monte Carlo (GHMC) algorithms, both in their standard and adaptive versions. Moreover, both *single-chain* and *multi-chain* versions are implemented.
+Samplers are the main component of the library. They implement the Hamiltonian Monte Carlo (HMC) and Generalized Hamiltonian Monte Carlo (GHMC) algorithms, both in their standard and adaptive versions. Moreover, both *single-chain* and *multi-chain* versions are implemented.
+
+<div id="samplers", align="center">
+    <img src="img/Implemented_Samplers.png" alt="pyHaiCS Samplers" style="height: auto; max-width: 90%; padding-bottom: 5%;">
+</div>
 
 ### Hamiltonian Monte Carlo (HMC)
 
