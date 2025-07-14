@@ -19,24 +19,27 @@ Additionally, the library includes several special cases of GHMC, such as Molecu
 !!! info "Implemented Samplers"
     The following samplers are currently available in **pyHaiCS**:
 
-    #### Standard Monte Carlo
-    - **Rejection Sampling (RS)**
-    - **Importance Sampling (IS)**
+    **Standard Monte Carlo**
 
-    #### Markov Chain Monte Carlo
-    - **Random-Walk Metropolis-Hastings (RWMH)**
-    - **Gibbs Sampling (GS)**
+    - Rejection Sampling (RS)
+    - Importance Sampling (IS)
 
-    #### Hamiltonian-Inspired MCMC
-    - **Hamiltonian Monte Carlo (HMC)**
-    - **Generalized Hamiltonian Monte Carlo (GHMC)**, and the following special cases:
-        - **Molecular Dynamics (MDMC)**
-        - **Stochastic Langevin Dynamics Monte Carlo (SLDMC)**
-        - **Metropolis-Adjusted Langevin Algorithm (MALA)**
-        - **Second-Order Langevin Monte Carlo (L2MC)**
-    - **s-AIA HMC/GHMC** (Adaptive Tuning Versions for HMC/GHMC)
-    - **Modified Hamiltonian Monte Carlo (MHMC)**
-    - **Riemannian Manifold Hamiltonian Monte Carlo (RMHMC)**
+    **Markov Chain Monte Carlo**
+
+    - Random-Walk Metropolis-Hastings (RWMH)
+    - Gibbs Sampling (GS)
+
+    **Hamiltonian-Inspired MCMC**
+
+    - Hamiltonian Monte Carlo (HMC)
+    - Generalized Hamiltonian Monte Carlo (GHMC), and the following particular cases:
+        - Molecular Dynamics (MDMC)
+        - Stochastic Langevin Dynamics Monte Carlo (SLDMC)
+        - Metropolis-Adjusted Langevin Algorithm (MALA)
+        - Second-Order Langevin Monte Carlo (L2MC)
+    - s-AIA HMC/GHMC (Adaptive Tuning Versions for HMC/GHMC)
+    - Modified Hamiltonian Monte Carlo (MHMC)
+    - Riemannian Manifold Hamiltonian Monte Carlo (RMHMC)
 
 ### Hamiltonian Monte Carlo (HMC)
 
