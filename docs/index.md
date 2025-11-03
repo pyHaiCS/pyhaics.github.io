@@ -135,3 +135,12 @@ By leveraging Hamiltonian dynamics, HMC offers several advantages over tradition
 *   **Scalability to High Dimensions:** The efficiency gains of HMC become more pronounced as the dimensionality of the problem increases, making it a powerful tool for complex statistical models with many parameters.
 
 In summary, Hamiltonian Monte Carlo provides a robust and efficient approach to MCMC sampling by harnessing the principles of Hamiltonian dynamics. By carefully simulating the physical movement of a system guided by the target distribution, HMC overcomes many limitations of traditional MCMC methods, enabling faster and more reliable sampling from complex, high-dimensional probability distributions.  `pyHaiCS` aims to make these powerful methods accessible and easy to use for a wide range of applications in **computational statistics** and *beyond* :)
+
+## References
+`pyHaiCS` is an open-source project and is actively maintained and developed by a team of researchers and practitioners in the field of computational statistics. We welcome contributions from the community, and encourage users to report issues, suggest new features, and contribute to the development of the library.
+
+This project was initially conceived as a Python implementation of the work presented in the following publications. However, the library has since evolved into a more general-purpose tool for Hamiltonian-based Monte-Carlo methods in computational statistics and now includes a variety of additional features and functionalities.
+
+> - L. Nagar, M. Fernández-Pendás, J. M. Sanz-Serna, E. Akhmatskaya, Adaptive Multi-stage Integration Schemes for Hamiltonian Monte Carlo. Journal of Computational Physics, 502 (2024) 112800. DOI: https://doi.org/10.1016/j.jcp.2024.112800
+> - T. Radivojevic, E. Akhmatskaya, Modified Hamiltonian Monte Carlo for Bayesian Inference. Statistics and Computing, 30 (2020) 377-404. DOI: https://doi.org/10.1007/s11222-019-09885-x 
+> - T. Radivojevic. Enhancing Sampling in Computational Statistics Using Modified Hamiltonians. PhD thesis, UPV/EHU, Bilbao (Spain), 2016. URI http://hdl.handle.net/20.500.11824/323
